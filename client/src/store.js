@@ -11,7 +11,7 @@ export default new Vuex.Store({
     isLogin: false,
     isAdmin: false,
     userName: '',
-    cart: []
+    countCart: null
   },
   mutations: {
     userLogin (state) {
@@ -27,8 +27,14 @@ export default new Vuex.Store({
       state.isLogin = false
       state.isAdmin = false
     },
-    addToCart (state, data) {
-      state.cart.push(data)
+    setupCountCart (state, payload) {
+      state.countCart += payload
+    },
+    plusCountCart (state) {
+      state.countCart++
+    },
+    minCountCart (state) {
+      state.countCart--
     }
   },
   actions: {

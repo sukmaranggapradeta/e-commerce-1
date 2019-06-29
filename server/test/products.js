@@ -16,7 +16,7 @@ before(done => {
         name: 'admin',
         email: 'admin@gmail.com',
         password: 'admin',
-        role: 'admin'
+        role: '123456789'
     }
     User.create(newUser)
         .then(user => {

@@ -3,9 +3,9 @@
     <nav>
       <div class="nav-wrapper grey darken-4">
         <div id="logonavbar" class="left">
-          <a href="#!" class="brand-logo">
+          <router-link to="/" class="brand-logo">
             <i class="material-icons">local_drink</i>CoffeeMe
-          </a>
+         </router-link>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger">
             <i class="material-icons">menu</i>
           </a>
@@ -16,14 +16,13 @@
               </a>
             </li>
           </ul>
-           
         </div>
         <div id="menunavbar" class>
           <ul class="right hide-on-med-and-down">
             <li v-if="isLogin && !isAdmin">
-              <a href="#">
-                <i class="material-icons">shopping_cart</i>
-              </a>
+              <router-link to="/carts">
+                <i class="material-icons left">shopping_cart</i>{{ countCart }}
+              </router-link>
             </li>
             <li v-if="!isLogin">
               <router-link to="/login">
@@ -36,7 +35,9 @@
               </router-link>
             </li>
             <li v-if="isLogin">
-              <a class="userprofile">Hi, {{ userName }}</a>
+              <router-link to="/transactions">
+                <i class="material-icons right">face</i>{{ userName }}
+              </router-link>
             </li>
             <li v-if="isLogin">
               <router-link id="logout_link" to="/logout" @click.native="logout()"><i class="material-icons right">last_page</i>Logout</router-link>
@@ -81,7 +82,8 @@ export default {
     ...mapState([
       'isLogin',
       'isAdmin',
-      'userName'
+      'userName',
+      'countCart'
     ])
   },
   methods: {
@@ -100,6 +102,12 @@ export default {
 </script>
 
 <style scoped>
+li {
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+.brand-logo {
+font-family: 'Oleo Script Swash Caps', cursive;
+}
 #logonavbar {
   margin-left: 40px;
 }

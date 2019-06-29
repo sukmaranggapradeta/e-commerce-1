@@ -1,5 +1,60 @@
 <template>
-    <div class="">
-        <h1>MY CART</h1>
-    </div>
+  <div class="">
+    <CartDetail
+      v-if="!checkout_page"
+      :myCarts="myCarts"
+      :total="total"
+      @remove_quantity="remove_quantity"
+      @add_quantity="add_quantity"
+      @delete_cart="delete_cart"
+      @checkout="checkout"
+    ></CartDetail>
+
+    <Checkout
+      v-if="checkout_page"
+    ></Checkout>
+  </div>
 </template>
+
+<script>
+import Swal from 'sweetalert2'
+import myServer from '../api/myServer.js'
+import CartDetail from '../components/CartDetail'
+import Checkout from '../components/Checkout'
+import { platform } from 'os';
+import { truncate } from 'fs';
+
+export default {
+  props: ['myCarts', 'total'],
+  components: {
+    CartDetail,
+    Checkout
+  },
+  data () {
+    return {
+      checkout_page: false
+    }
+  },
+  methods: {
+    remove_quantity (payload) {
+      this.$emit('remove_quantity', payload)
+    },
+    add_quantity (payload) {
+      this.$emit('add_quantity', payload)
+    },
+    checkout () {
+      this.checkout_page = true
+      console.log('checkout')
+      console.log(this.myCarts)
+      console.log(localStorage.getItem('id'))
+      console.log(this.total)
+    },
+    delete_cart (id) {
+      this.$emit('delete_cart', id)
+    }
+  }
+}
+</script>
+
+<style scoped>
+</style>

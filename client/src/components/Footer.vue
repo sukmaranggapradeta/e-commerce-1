@@ -32,10 +32,14 @@ body {
   min-height: 100vh;
   flex-direction: column;
 }
+p {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+}
 main {
   flex: 1 0 auto;
 }
 #logofooter{
-  width: 150px;
+  width: 175px;
 }
 </style>

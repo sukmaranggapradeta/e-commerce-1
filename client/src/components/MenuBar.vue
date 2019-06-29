@@ -6,13 +6,13 @@
           <li class="tab col col s12 m3 l3">
             <router-link to="/">HOME</router-link>
           </li>
-          <li class="tab col s12 m3 l3">
+          <li v-if="isLogin" class="tab col s12 m3 l3">
             <router-link to="/products">PRODUCT</router-link>
           </li>
-          <li class="tab col s12 m3 l3">
+          <li v-if="isLogin" class="tab col s12 m3 l3">
             <router-link to="/carts">MY CART</router-link>
           </li>
-          <li class="tab col s12 m3 l3">
+          <li v-if="isLogin" class="tab col s12 m3 l3">
             <router-link to="/transactions">MY HISTORY</router-link>
           </li>
         </ul>
@@ -61,7 +61,7 @@ import { mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['isAdmin'])
+    ...mapState(['isAdmin', 'isLogin'])
   },
   data () {
     return {}

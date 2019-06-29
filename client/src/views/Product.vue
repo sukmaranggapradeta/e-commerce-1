@@ -19,6 +19,7 @@
           @delete_product="delete_product"
           @update_product="update_product"
           @trigger_edit_page="trigger_edit_page"
+          @add_to_cart="add_to_cart"
         ></ProductCard>
       </div>
     </div>
@@ -45,6 +46,10 @@ export default {
     }
   },
   methods: {
+    add_to_cart (productId) {
+      console.log('dari product view')
+      this.$emit('add_to_cart', productId)
+    },
     update_data_after_edit (data) {
       this.products = this.products.map(el => {
         console.log(el)
