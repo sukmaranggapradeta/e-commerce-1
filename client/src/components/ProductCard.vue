@@ -12,6 +12,7 @@
       <span>{{ product.name }}</span>
       <!-- <span>{{ product.description }}</span> -->
       <h6>IDR {{ rupiah(product.price) }}</h6>
+      <span class="footerimage">click image for detail</span>
     </div>
     <div v-if="isAdmin" class="card-action">
       <div class="row s12 m12 l12">
@@ -27,14 +28,11 @@
 
 <script>
 import { mapState } from 'vuex'
-import Swal from 'sweetalert2'
-import myServer from '../api/myServer.js'
 
 export default {
   props: ['product'],
   data () {
     return {
-
     }
   },
   computed: {
@@ -44,11 +42,11 @@ export default {
   },
   methods: {
     show_detail (id) {
-      console.log('show_detail', id)
+      // console.log('show_detail', id)
       this.$router.push(`/products/${id}`)
     },
     add_to_cart (productId) {
-      console.log('add_to_cart trigger')
+      // console.log('add_to_cart trigger')
       this.$emit('add_to_cart', productId)
     },
     delete_product (id) {
@@ -85,5 +83,8 @@ h4, span, h6 {
 }
 img {
   cursor: pointer;
+}
+.footerimage {
+  font-size: 10px;
 }
 </style>

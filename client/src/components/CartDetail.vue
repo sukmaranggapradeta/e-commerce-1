@@ -96,7 +96,7 @@ export default {
       this.$emit('remove_quantity', { id, beforeQuantity })
     },
     add_quantity (id, beforeQuantity) {
-      console.log('add quantity trigger cart detail')
+      // console.log('add quantity trigger cart detail')
       this.$emit('add_quantity', { id, beforeQuantity })
     },
     continue_shopping () {
@@ -132,7 +132,7 @@ th, td, h1 {
   font-family: 'B612 Mono', monospace;
 }
 #emptycart {
-  width: 100%;
+  width: 50%;
 }
 img {
   width: 150px;

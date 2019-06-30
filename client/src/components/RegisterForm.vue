@@ -92,10 +92,8 @@ export default {
               timer: 1500
             })
             this.$router.push('/login')
-            console.log(newUser)
           })
           .catch((err) => {
-            console.log(err.response.data.err)
             Swal.fire({
               type: 'error',
               title: 'Oops...',

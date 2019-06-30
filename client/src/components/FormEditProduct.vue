@@ -138,10 +138,10 @@ export default {
         this.loading = false
         this.form_edit_page = true
       } else if (this.data_edit.image_url === this.edit_urlTemp) {
-        console.log('foto sama')
+        // console.log('foto sama')
         this.update_product(this.urlTemp)
       } else {
-        console.log('foto beda')
+        // console.log('foto beda')
         let formData = new FormData()
         formData.append('image', this.file)
         myServer

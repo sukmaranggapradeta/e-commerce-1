@@ -21,12 +21,10 @@
 </template>
 
 <script>
-import Swal from 'sweetalert2'
-import myServer from '../api/myServer.js'
 import CartDetail from '../components/CartDetail'
 import Checkout from '../components/Checkout'
-import { platform } from 'os';
-import { truncate } from 'fs';
+// import { platform } from 'os'
+// import { truncate } from 'fs'
 
 export default {
   props: ['myCarts', 'total'],
@@ -51,12 +49,12 @@ export default {
     },
     checkout () {
       this.checkout_page = true
-      console.log('checkout')
-      console.log(this.myCarts)
-      console.log(localStorage.getItem('id'))
-      console.log(this.total)
+      // console.log('checkout')
+      // console.log(this.myCarts)
+      // console.log(localStorage.getItem('id'))
+      // console.log(this.total)
     },
-    resetMyCarts() {
+    resetMyCarts () {
       this.$emit('resetMyCarts')
     },
     delete_cart (id) {

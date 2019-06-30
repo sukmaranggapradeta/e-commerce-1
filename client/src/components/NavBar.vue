@@ -100,14 +100,7 @@ export default {
   },
   methods: {
     logout () {
-      console.log('logout')
-      this.$store.commit('userLogout')
-      localStorage.removeItem('token')
-      localStorage.removeItem('id')
-      localStorage.removeItem('name')
-      localStorage.removeItem('email')
-      localStorage.removeItem('role')
-      this.$router.push('/login')
+      this.$emit('logout')
     }
   }
 }

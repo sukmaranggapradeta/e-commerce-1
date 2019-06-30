@@ -103,10 +103,10 @@ export default {
     selectStatus (value) {
       this.fetchDataTransaction()
       this.selected_status = value
-      console.log(this.selected_status)
+      // console.log(this.selected_status)
     },
     send_order (id) {
-      console.log('send_order', id)
+      // console.log('send_order', id)
       this.$emit('send_order', id)
     },
     order_received (id) {
@@ -134,7 +134,7 @@ export default {
   },
   computed: {
     tansactionFilter: function () {
-      console.log('filter trigger')
+      // console.log('filter trigger')
       return this.myTransactions.filter((transaction) => {
         return transaction.status
           .match(this.selected_status)

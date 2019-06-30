@@ -1,6 +1,8 @@
 <template>
   <div class="login">
-      <LoginForm></LoginForm>
+      <LoginForm
+        @fetchDataCarts="fetchDataCarts"
+      ></LoginForm>
   </div>
 </template>
 
@@ -10,6 +12,11 @@ import LoginForm from '../components/LoginForm'
 export default {
   components: {
     LoginForm
+  },
+  methods: {
+    fetchDataCarts () {
+      this.$emit('fetchDataCarts')
+    }
   }
 }
 </script>

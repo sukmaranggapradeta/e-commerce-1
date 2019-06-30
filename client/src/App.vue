@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <NavBar></NavBar>
+    <NavBar
+      @logout="logout"
+    ></NavBar>
     <MenuBar></MenuBar>
     <router-view
       :myCarts="myCarts"
@@ -10,6 +12,7 @@
       @delete_cart="delete_cart"
       @add_to_cart="add_to_cart"
       @resetMyCarts="resetMyCarts"
+      @fetchDataCarts="fetchDataCarts"
     />
     <Footer></Footer>
   </div>
@@ -70,7 +73,7 @@ export default {
                   }
                 })
                 M.toast({ html: `${data.product.name} added to cart` })
-                console.log(data)
+                // console.log(data)
               })
               .catch((err) => {
                 Swal.fire({
@@ -91,14 +94,14 @@ export default {
                 }
               })
               .then(({ data }) => {
-                console.log(data, ' baruuu')
+                // console.log(data, ' baruuu')
                 this.$store.commit('plusCountCart')
                 this.myCarts.push(data)
                 this.total += data.product.price
                 M.toast({ html: `${data.product.name} added to cart` })
               })
               .catch((err) => {
-                console.log(err)
+                // console.log(err)
                 Swal.fire({
                   type: 'error',
                   title: 'Oops...',
@@ -108,7 +111,7 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
           Swal.fire({
             type: 'error',
             title: 'Oops...',
@@ -160,7 +163,7 @@ export default {
       })
     },
     add_quantity (payload) {
-      console.log('add quantity myCart', payload.id)
+      // console.log('add quantity myCart', payload.id)
       myServer
         .put(`/carts/${payload.id}`, {
           quantity: payload.beforeQuantity + 1
@@ -230,19 +233,35 @@ export default {
         .then(({ data }) => {
           this.total = null
           this.myCarts = data
-          console.log(this.myCarts.length, 'ini length cart')
+          // console.log(this.myCarts.length, 'ini length cart')
           this.$store.commit('setupCountCart', this.myCarts.length)
           this.myCarts.forEach(el => {
             this.total += (el.product.price * el.quantity)
           })
         })
         .catch((err) => {
-          Swal.fire({
-            type: 'error',
-            title: 'Oops...',
-            text: `${err.response.data}`
-          })
+          if (err.response.status === 401) {
+            this.logout()
+            this.$router.push('/login')
+          } else {
+            // console.log(err.response)
+            Swal.fire({
+              type: 'error',
+              title: 'Oops...',
+              text: `${err.response.status}`
+            })
+          }
         })
+    },
+    logout () {
+      // console.log('logout')
+      this.$store.commit('userLogout')
+      localStorage.removeItem('token')
+      localStorage.removeItem('id')
+      localStorage.removeItem('name')
+      localStorage.removeItem('email')
+      localStorage.removeItem('role')
+      this.$router.push('/login')
     }
   },
   created () {

@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     send_order (id) {
-      console.log('send order')
       myServer
         .put(`/transactions/admin/${id}`, {
           status: 'PESANAN DIKIRIM'

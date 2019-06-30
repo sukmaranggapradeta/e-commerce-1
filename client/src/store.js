@@ -30,7 +30,7 @@ export default new Vuex.Store({
       state.isAdmin = false
     },
     setupCountCart (state, payload) {
-      state.countCart += payload
+      state.countCart = payload
     },
     plusCountCart (state) {
       state.countCart++

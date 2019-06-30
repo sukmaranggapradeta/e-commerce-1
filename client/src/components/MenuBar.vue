@@ -3,7 +3,7 @@
     <div class="row container">
       <div v-if="!isAdmin" class="row">
         <ul class="tabs">
-          <li class="tab col col s12 m3 l3">
+          <li v-if="isLogin" class="tab col col s12 m3 l3">
             <router-link to="/">HOME</router-link>
           </li>
           <li v-if="isLogin" class="tab col s12 m3 l3">

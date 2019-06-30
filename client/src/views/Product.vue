@@ -50,12 +50,12 @@ export default {
   },
   methods: {
     add_to_cart (productId) {
-      console.log('dari product view')
+      // console.log('dari product view')
       this.$emit('add_to_cart', productId)
     },
     update_data_after_edit (data) {
       this.products = this.products.map(el => {
-        console.log(el)
+        // console.log(el)
         if (el._id === data._id) {
           el.name = data.name
           el.description = data.description
@@ -77,8 +77,8 @@ export default {
           this.data_edit = el
         }
       })
-      console.log('edit mode', id)
-      console.log(this.data_edit)
+      // console.log('edit mode', id)
+      // console.log(this.data_edit)
     },
     fetchDataProducts () {
       myServer
@@ -140,7 +140,7 @@ export default {
       })
     },
     update_product (id) {
-      console.log('update_product')
+      // console.log('update_product')
       myServer
         .put(`/products/id`, {
           headers: {

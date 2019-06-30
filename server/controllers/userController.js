@@ -6,6 +6,9 @@ class UserController {
     static register(req, res, next) {
         // console.log('masuk register')
         let { name, email, password, role } = req.body
+        if (role === null || role === undefined) {
+            role = 'customer'
+        }
         User.create({
             name, email, password, role
         })

@@ -47,6 +47,9 @@ export default {
     }
   },
   methods: {
+    fetchDataCarts () {
+      this.$emit('fetchDataCarts')
+    },
     login_button () {
       // console.log('login button trigger')
       myServer
@@ -69,6 +72,7 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
+          this.fetchDataCarts()
         })
         .catch((err) => {
           Swal.fire({
