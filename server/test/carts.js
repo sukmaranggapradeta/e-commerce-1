@@ -38,10 +38,6 @@ before(done => {
             .then((newCart) => {
                 cartId1 = newCart._id
                 custId1 = newCart.customer
-                // console.log(newCart)
-                // console.log(cartId1, "cart id")
-                // console.log(user._id, "user._id")
-                // console.log(custId1)
                 userId = user._id
             })
         })

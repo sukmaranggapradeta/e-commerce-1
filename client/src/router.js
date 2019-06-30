@@ -26,7 +26,14 @@ export default new Router({
     {
       path: '/products',
       name: 'products',
-      component: () => import(/* webpackChunkName: "products" */ './views/Product.vue')
+      component: () => import(/* webpackChunkName: "products" */ './views/Product.vue'),
+      children: [
+        {
+          path: ':id',
+          name: 'product-detail',
+          component: () => import(/* webpackChunkName: "productdetail" */ './components/ProductDetailCard.vue')
+        }
+      ]
     },
     {
       path: '/carts',
@@ -34,15 +41,24 @@ export default new Router({
       component: () => import(/* webpackChunkName: "carts" */ './views/MyCart.vue')
     },
     {
+      path: '/orders',
+      name: 'orders',
+      component: () => import(/* webpackChunkName: "orders" */ './views/MyTransaction.vue')
+    },
+    {
       path: '/transactions',
       name: 'transactions',
-      component: () => import(/* webpackChunkName: "transactions" */ './views/MyTransaction.vue')
+      component: () => import(/* webpackChunkName: "transactions" */ './views/AdminTransaction.vue')
     },
     {
       path: '/addproduct',
       name: 'addproduct',
       component: () => import(/* webpackChunkName: "addproduct" */ './views/AddProduct.vue')
+    },
+    {
+      path: '/thanks',
+      name: 'thanks',
+      component: () => import(/* webpackChunkName: "thanks" */ './views/Thanks.vue')
     }
-
   ]
 })

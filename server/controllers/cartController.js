@@ -11,7 +11,7 @@ class CartController {
             .populate('customer')
             .populate('product')
             .then((newCartDetail) => {
-                res.status(200).json(newCartDetail)
+                res.status(201).json(newCartDetail)
             })
         })
         .catch(next)
@@ -58,6 +58,18 @@ class CartController {
         let id = req.params.id
         Cart.findByIdAndDelete(id)
         .populate('product')
+        .then((deleted) => {
+            res.status(200).json(deleted)
+        })
+        .catch(next)
+    }
+
+    static deleteMany(req, res, next) {
+        console.log('delete many')
+        let custId = req.params.custId
+        Cart.deleteMany({
+            customer: custId
+        })
         .then((deleted) => {
             res.status(200).json(deleted)
         })

@@ -2,7 +2,7 @@
   <div>
     <div class="row container">
       <div v-if="!isAdmin" class="row">
-        <ul class="tabs hide-on-med-and-down">
+        <ul class="tabs">
           <li class="tab col col s12 m3 l3">
             <router-link to="/">HOME</router-link>
           </li>
@@ -13,13 +13,13 @@
             <router-link to="/carts">MY CART</router-link>
           </li>
           <li v-if="isLogin" class="tab col s12 m3 l3">
-            <router-link to="/transactions">MY HISTORY</router-link>
+            <router-link to="/orders">MY ORDERS</router-link>
           </li>
         </ul>
       </div>
 
       <div v-if="isAdmin" class="row">
-        <div class="col s12 m3 l3">
+        <div class="col s12 m4 l4">
           <div class="link-7 menulink">
           <router-link to="/addproduct">
               <span class="thin">ADD</span>
@@ -27,7 +27,7 @@
           </router-link>
           </div>
         </div>
-        <div class="col s12 m3 l3">
+        <div class="col s12 m4 l4">
           <div class="link-7 menulink">
           <router-link to="/products">
               <span class="thin">PRO</span>
@@ -35,15 +35,7 @@
           </router-link>
           </div>
         </div>
-        <div class="col s12 m3 l3">
-          <div class="link-7 menulink">
-          <router-link to="/orders">
-              <span class="thin">OR</span>
-              <span class="thick">DER</span>
-          </router-link>
-          </div>
-        </div>
-        <div class="col s12 m3 l3">
+        <div class="col s12 m4 l4">
           <div class="link-7 menulink">
           <router-link to="/transactions">
               <span class="thin">TRAN</span>

@@ -2,13 +2,14 @@
   <div id="app">
     <NavBar></NavBar>
     <MenuBar></MenuBar>
-    <router-view 
+    <router-view
       :myCarts="myCarts"
       :total="total"
       @remove_quantity="remove_quantity"
       @add_quantity="add_quantity"
       @delete_cart="delete_cart"
       @add_to_cart="add_to_cart"
+      @resetMyCarts="resetMyCarts"
     />
     <Footer></Footer>
   </div>
@@ -214,6 +215,10 @@ export default {
             })
           })
       }
+    },
+    resetMyCarts () {
+      this.myCarts = []
+      this.total = null
     },
     fetchDataCarts () {
       myServer

@@ -10,8 +10,9 @@
   <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=B612+Mono&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed&display=swap" rel="stylesheet">
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <link rel="icon" href="<%= BASE_URL %>logo_header.png">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
@@ -36,14 +37,21 @@
     });
     // const sideNav = document.querySelectorAll('.sidenav');
     //     M.Sidenav.init(sideNav)
+    const tooltipped = document.querySelectorAll('.tooltipped');
+    M.Sidenav.init(tooltipped)
 
-    document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {
-      direction: 'left',
-      hoverEnabled: false
-    });
-  });
+    // document.addEventListener('DOMContentLoaded', function() {
+    // var elems = document.querySelectorAll('.tooltipped');
+    // var instances = M.Tooltip.getInstance(elems);
+    // });
+
+    // document.addEventListener('DOMContentLoaded', function() {
+    // var elems = document.querySelectorAll('.fixed-action-btn');
+    // var instances = M.FloatingActionButton.init(elems, {
+    //   direction: 'left',
+    //   hoverEnabled: false
+    // });
+  // });
   </script>
 </body>
 

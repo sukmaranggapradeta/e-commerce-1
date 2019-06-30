@@ -11,7 +11,7 @@
           </a>
           <ul class="sidenav" id="mobile-demo">
             <li v-if="isLogin && !isAdmin">
-              <a href="#">
+              <a @click.prevent="logout">
                 <i class="material-icons">shopping_cart</i>
               </a>
             </li>
@@ -22,6 +22,16 @@
             <li v-if="isLogin && !isAdmin">
               <router-link to="/carts">
                 <i class="material-icons left">shopping_cart</i>{{ countCart }}
+              </router-link>
+            </li>
+            <li v-if="false">
+              <router-link to="/orders">
+                <i class="material-icons left">notifications</i>{{ notifCustomer }} cust
+              </router-link>
+            </li>
+            <li v-if="false">
+              <router-link to="/transactions">
+                <i class="material-icons left">notifications</i>{{ notifAdmin }} admin
               </router-link>
             </li>
             <li v-if="!isLogin">
@@ -83,7 +93,9 @@ export default {
       'isLogin',
       'isAdmin',
       'userName',
-      'countCart'
+      'countCart',
+      'notifCustomer',
+      'notifAdmin'
     ])
   },
   methods: {

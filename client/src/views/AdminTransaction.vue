@@ -2,7 +2,7 @@
   <div class="container">
     <TransactionCard
       :myTransactions="myTransactions"
-      @order_received="order_received"
+      @send_order="send_order"
       @fetchDataTransaction="fetchDataTransaction"
     ></TransactionCard>
   </div>
@@ -23,11 +23,11 @@ export default {
     TransactionCard
   },
   methods: {
-    order_received (id) {
-      // console.log('order_received')
+    send_order (id) {
+      console.log('send order')
       myServer
-        .put(`/transactions/customer/${id}`, {
-          status: 'PESANAN SELESAI'
+        .put(`/transactions/admin/${id}`, {
+          status: 'PESANAN DIKIRIM'
         }, {
           headers: {
             token: localStorage.getItem('token')
@@ -40,9 +40,10 @@ export default {
               el.status = data.status
             }
           })
-          // this.$store.commit('addnotifAdmin')
+          // this.$store.commit('plusNotifCust')
           this.myTransactions = myTransTemp
           // console.log(myTransTemp)
+          // this.fetchDataTransaction()
         })
         .catch((err) => {
           Swal.fire({
@@ -54,7 +55,7 @@ export default {
     },
     fetchDataTransaction () {
       myServer
-        .get(`/transactions/${localStorage.getItem('id')}`, {
+        .get(`/transactions/`, {
           headers: {
             token: localStorage.getItem('token')
           }
@@ -78,4 +79,5 @@ export default {
 </script>
 
 <style>
+
 </style>

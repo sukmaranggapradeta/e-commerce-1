@@ -1,6 +1,7 @@
 const Cart = require('../models/cartModel');
 
 module.exports = function (req, res, next) {
+    // console.log(req.params.id," =====")
     try {
         Cart.findById(req.params.id)
             .then((cart) => {

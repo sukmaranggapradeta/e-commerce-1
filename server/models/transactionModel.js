@@ -3,18 +3,32 @@ const Schema = mongoose.Schema
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 const transactionSchema = new Schema ({
-    cartItem: [],
+    cartItem: {
+        type: [],
+        required: true
+    },
     customer: {
         type: ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
-    total: Number,
+    total: {
+        type: Number,
+        required: true
+    },
     status: String,
-    address: String,
+    address: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    }
 }, { timestamps: true })
 
 transactionSchema.pre('save', function (next) {
-    this.status = 'onCart'
+    this.status = 'PESANAN DIPROSES'
     next()
 })
 

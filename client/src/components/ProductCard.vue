@@ -2,9 +2,9 @@
 <div class="col s6 m6 l4">
   <div class="card hoverable">
     <div class="card-image">
-      <img :src="product.image_url ? product.image_url : 'https://lh3.googleusercontent.com/zV-y-t47LGjNh-WuN90jHDMnB1ifHmgy59Ab65HITNzJpMFX3zr1MiCPJwKyriEP-pXOzRY3=w1080-h608-p-no-v0'">
+      <img @click="show_detail(product._id)" :src="product.image_url ? product.image_url : 'https://lh3.googleusercontent.com/zV-y-t47LGjNh-WuN90jHDMnB1ifHmgy59Ab65HITNzJpMFX3zr1MiCPJwKyriEP-pXOzRY3=w1080-h608-p-no-v0'">
       <!-- <h1 class="card-title">{{ product.name }}</h1> -->
-      <span v-if="!isAdmin" @click="add_to_cart(product._id)" class="btn-floating halfway-fab waves-effect waves-light red">
+      <span v-if="!isAdmin" @click="add_to_cart(product._id)" class="btn-floating halfway-fab waves-effect waves-light red pulse">
         <i class="material-icons">add_shopping_cart</i>
       </span>
     </div>
@@ -43,6 +43,10 @@ export default {
     ])
   },
   methods: {
+    show_detail (id) {
+      console.log('show_detail', id)
+      this.$router.push(`/products/${id}`)
+    },
     add_to_cart (productId) {
       console.log('add_to_cart trigger')
       this.$emit('add_to_cart', productId)
@@ -78,5 +82,8 @@ h4, span, h6 {
 }
 .card-image img{
   max-height: 100%;
+}
+img {
+  cursor: pointer;
 }
 </style>

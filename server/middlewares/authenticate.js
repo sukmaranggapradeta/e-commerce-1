@@ -9,6 +9,7 @@ module.exports = function (req, res, next) {
             .then(user => {
                 if (user) {
                     req.decoded = decoded;
+                    // console.log('next authentica')
                     next()
                 } else {
                     throw { status: 401, messages: 'User is not valid' }

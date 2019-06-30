@@ -2,6 +2,9 @@
   <div class="container">
     <div class="row">
       <div>
+        <div class="center">
+          <router-view ></router-view>
+        </div>
         <FormEditProduct
           class="center"
           v-if="edit_mode"

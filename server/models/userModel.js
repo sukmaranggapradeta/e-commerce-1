@@ -34,9 +34,7 @@ userSchema.path('email').validate(function (email) {
 
 userSchema.pre('save', function (next) {
     this.password = hashPassword(this.password)
-    // console.log(this)
     if (this.role == '123456789'){
-        console.log('masuk sini')
         this.role = 'admin'
     }else{
         this.role = 'customer'

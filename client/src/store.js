@@ -11,7 +11,9 @@ export default new Vuex.Store({
     isLogin: false,
     isAdmin: false,
     userName: '',
-    countCart: null
+    countCart: null,
+    notifCustomer: 0,
+    notifAdmin: 0
   },
   mutations: {
     userLogin (state) {
@@ -35,6 +37,18 @@ export default new Vuex.Store({
     },
     minCountCart (state) {
       state.countCart--
+    },
+    plusNotifCust (state) {
+      state.notifCustomer++
+    },
+    resetNotifCust (state) {
+      state.notifCustomer = 0
+    },
+    addnotifAdmin (state) {
+      state.notifAdmin++
+    },
+    resetCountCart (state) {
+      state.countCart = 0
     }
   },
   actions: {

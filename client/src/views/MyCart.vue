@@ -12,6 +12,10 @@
 
     <Checkout
       v-if="checkout_page"
+      @back_to_cart="back_to_cart"
+      :myCarts="myCarts"
+      :total="total"
+      @resetMyCarts="resetMyCarts"
     ></Checkout>
   </div>
 </template>
@@ -36,6 +40,9 @@ export default {
     }
   },
   methods: {
+    back_to_cart () {
+      this.checkout_page = false
+    },
     remove_quantity (payload) {
       this.$emit('remove_quantity', payload)
     },
@@ -48,6 +55,9 @@ export default {
       console.log(this.myCarts)
       console.log(localStorage.getItem('id'))
       console.log(this.total)
+    },
+    resetMyCarts() {
+      this.$emit('resetMyCarts')
     },
     delete_cart (id) {
       this.$emit('delete_cart', id)
