@@ -12,8 +12,9 @@ const multer = Multer({
 
 Route.get('/', ProductController.gets)
 Route.post('/', isAdmin, ProductController.create)
-Route.put('/:id', isAdmin, ProductController.update)
-Route.delete('/:id', isAdmin, ProductController.delete)
+// Route.put('/:id', isAdmin, ProductController.update)
+Route.put('/:id', isAdmin, ProductController.findOne, gcsMiddlewares.deleteFileImage, ProductController.update)
+Route.delete('/:id', isAdmin, ProductController.findOne, gcsMiddlewares.deleteImage, ProductController.delete)
 Route.post('/image/upload', multer.single('image'), gcsMiddlewares.uploadSingle, ProductController.uploadImage)
 
 module.exports = Route

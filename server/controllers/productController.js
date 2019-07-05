@@ -1,4 +1,5 @@
 const Product = require('../models/productModel')
+// const deleteFileImage = require('../middlewares/deleteImage')
 
 class ProductController {
     static create(req, res, next) {
@@ -20,11 +21,28 @@ class ProductController {
             .catch(next)
     }
 
+    static findOne(req, res, next) {
+        let productId = req.params.id
+        console.log(req.body, " ini findone req body - -- --- -")
+        let imageBefore = req.body
+        Product.findById(productId)
+            .then((productFound) => {
+                console.log(productFound, " --- productFound")
+                req.deleteUrlImage = productFound.image_url
+                req.image_before = imageBefore
+                // res.status(200).json(productFound)
+                next()
+            })
+            .catch(next)
+    }
+
     static update(req, res, next) {
+        console.log('masuk update')
         let id = req.params.id
         let dataUpdate = req.body
         Product.findByIdAndUpdate(id, dataUpdate, { new: true })
             .then((updated) => {
+                console.log(updated, "update sukses")
                 res.status(200).json(updated)
             })
             .catch(next)
@@ -33,6 +51,7 @@ class ProductController {
     static delete(req, res, next) {
         Product.findByIdAndDelete(req.params.id)
             .then((deleted) => {
+                console.log(deleted, " deleted ---------")
                 res.status(200).json(deleted)
             })
             .catch(next)

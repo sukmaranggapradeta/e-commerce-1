@@ -97,4 +97,42 @@ ImgUpload.uploadSingle = async (req, res, next) => {
 
 }
 
+ImgUpload.deleteFileImage = async (req, res, next) => {
+  console.log('masuk deleteImageGCS')
+  console.log(req.deleteUrlImage, " ------------deleteUrlImage")
+  console.log(req.image_before, "---------------req.body.image.url")
+  console.log(req.body, "---------------")
+  if (req.body.image_url === undefined) {
+    console.log('image sama')
+    next()
+  } else {
+    console.log('image beda')
+    let fileImageUrl = req.deleteUrlImage.split('/')
+    let filename = fileImageUrl[(fileImageUrl.length - 1)]
+    console.log(filename, 'ini filename')
+  // Deletes the file from the bucket
+      await gcs
+        .bucket(bucketName)
+        .file(filename)
+        .delete();
+      console.log(`gs://${bucketName}/${filename} deleted.`);
+      next()
+  }
+}
+
+ImgUpload.deleteImage = async (req, res, next) => {
+  console.log('delete aja')
+  let fileImageUrl = req.deleteUrlImage.split('/')
+  let filename = fileImageUrl[(fileImageUrl.length - 1)]
+  console.log(filename, 'ini filename')
+// Deletes the file from the bucket
+    await gcs
+      .bucket(bucketName)
+      .file(filename)
+      .delete();
+    console.log(`gs://${bucketName}/${filename} deleted.`);
+    next()
+}
+
+
 module.exports = ImgUpload
